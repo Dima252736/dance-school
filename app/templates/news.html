@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Новости - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Новости и события</h2>
+
+    <div class="news-grid">
+        {% for news in news_items %}
+        <article class="news-card">
+            {% if news.image_url %}
+            <img src="{{ news.image_url }}" alt="{{ news.title }}" class="news-image">
+            {% endif %}
+            <div class="news-content">
+                <h3>{{ news.title }}</h3>
+                <p class="news-date">{{ news.created_at.strftime('%d.%m.%Y') }}</p>
+                <p>{{ news.content[:200] }}...</p>
+                <a href="/news/{{ news.id }}" class="read-more">Читать далее</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Сообщение отправлено - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="success-message">
+        <div class="success-icon">✓</div>
+        <h2>Сообщение отправлено!</h2>
+        <p>Спасибо за ваше сообщение. Мы свяжемся с вами в ближайшее время и ответим на все ваши вопросы.</p>
+
+        <div class="success-details">
+            <h3>Мы ценим ваше обращение</h3>
+            <p>Наша команда обычно отвечает в течение 2-3 часов в рабочее время (Пн-Пт, 9:00-18:00).</p>
+        </div>
+
+        <div class="success-actions">
+            <a href="/" class="cta-button">Вернуться на главную</a>
+            <a href="/contacts" class="cta-button secondary">Написать еще</a>
+        </div>
+
+        <div class="contact-info">
+            <p>Если вопрос срочный, звоните:</p>
+            <p class="phone-number">+7 (999) 123-45-67</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

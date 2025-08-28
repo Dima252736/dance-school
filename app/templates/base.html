@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance Studio - {% block title %}Школа танцев{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="/" style="color: white; text-decoration: none;">DanceStudio</a></h1>
+                </div>
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Главная</a>
+                    <a href="/about" class="nav-link">О нас</a>
+                    <a href="/classes" class="nav-link">Направления</a>
+                    <a href="/teachers" class="nav-link">Преподаватели</a>
+                    <a href="/schedule" class="nav-link">Расписание</a>
+                    <a href="/prices" class="nav-link">Цены</a>
+                    <a href="/gallery" class="nav-link">Галерея</a>
+                    <a href="/contacts" class="nav-link">Контакты</a>
+                    <a href="/registration" class="nav-link cta-button">Записаться</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 DanceStudio. Все права защищены.</p>
+            <p>Телефон: +7 (999) 123-45-67</p>
+            <p>Email: info@dancestudio.ru</p>
+            <p>Адрес: г. Москва, ул. Танцевальная, д. 15</p>
+        </div>
+    </footer>
+    <script src="/static/script.js"></script>
+</body>
+</html>

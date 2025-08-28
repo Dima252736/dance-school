@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Заявка отправлена - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="success-message">
+        <div class="success-icon">✓</div>
+        <h2>Заявка успешно отправлена!</h2>
+        <p>Спасибо за вашу заявку на пробное занятие. Мы свяжемся с вами в течение 24 часов для подтверждения записи и ответим на все вопросы.</p>
+
+        <div class="success-details">
+            <h3>Что дальше?</h3>
+            <ul>
+                <li>Ожидайте звонка от нашего менеджера</li>
+                <li>Подготовьте удобную спортивную одежду</li>
+                <li>Возьмите с собой сменную обувь</li>
+                <li>Приходите за 10-15 минут до занятия</li>
+            </ul>
+        </div>
+
+        <div class="success-actions">
+            <a href="/" class="cta-button">Вернуться на главную</a>
+            <a href="/classes" class="cta-button secondary">Посмотреть другие направления</a>
+        </div>
+
+        <div class="contact-info">
+            <p>Если у вас срочный вопрос, звоните:</p>
+            <p class="phone-number">+7 (999) 123-45-67</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

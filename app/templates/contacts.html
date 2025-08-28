@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Контакты - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Контакты</h2>
+
+    <div class="contacts-grid">
+        <div class="contact-info">
+            <h3>Наши контакты</h3>
+            <div class="contact-item">
+                <strong>Адрес:</strong>
+                <p>г. Москва, ул. Танцевальная, д. 15</p>
+            </div>
+            <div class="contact-item">
+                <strong>Телефон:</strong>
+                <p>+7 (999) 123-45-67</p>
+            </div>
+            <div class="contact-item">
+                <strong>Email:</strong>
+                <p>info@dancestudio.ru</p>
+            </div>
+            <div class="contact-item">
+                <strong>Время работы:</strong>
+                <p>Пн-Пт: 9:00-22:00<br>Сб-Вс: 10:00-20:00</p>
+            </div>
+
+            <h3>Мы в соцсетях</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">VK</a>
+                <a href="#" class="social-link">YouTube</a>
+                <a href="#" class="social-link">Telegram</a>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3>Напишите нам</h3>
+            <form action="/contact" method="post">
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="map-section">
+        <h3>Как добраться</h3>
+        <div class="map-placeholder">
+            [Здесь будет карта]
+            <p>Станция метро "Танцевальная", 5 минут пешком</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

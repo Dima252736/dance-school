@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - DanceStudio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h2>Танцуй с нами!</h2>
+        <p>Профессиональная школа танцев для всех возрастов и уровней подготовки</p>
+        <a href="/registration" class="cta-button">Начать танцевать</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2>Почему выбирают нас</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <h3>Профессиональные преподаватели</h3>
+                <p>Опытные хореографы с международным признанием</p>
+            </div>
+            <div class="feature">
+                <h3>Разные стили танцев</h3>
+                <p>От классического балета до современных направлений</p>
+            </div>
+            <div class="feature">
+                <h3>Удобное расписание</h3>
+                <p>Занятия в удобное время для детей и взрослых</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="popular-classes">
+    <div class="container">
+        <h2>Популярные направления</h2>
+        <div class="classes-grid">
+            {% for class in classes[:3] %}
+            <div class="class-card">
+                <h3>{{ class.name }}</h3>
+                <p>{{ class.description[:100] }}...</p>
+                <span class="level">{{ class.level }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

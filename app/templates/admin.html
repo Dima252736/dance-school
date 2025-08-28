@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Админ панель - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Административная панель</h2>
+
+    <div class="admin-stats">
+        <div class="stat-card">
+            <h3>Направления</h3>
+            <p class="stat-number">{{ classes|length }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Преподаватели</h3>
+            <p class="stat-number">{{ teachers|length }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Студенты</h3>
+            <p class="stat-number">{{ students|length }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Заявки</h3>
+            <p class="stat-number">{{ registrations|length }}</p>
+        </div>
+    </div>
+
+    <div class="admin-sections">
+        <div class="admin-section">
+            <h3>Последние заявки</h3>
+            <div class="registrations-list">
+                {% for reg in registrations[:5] %}
+                <div class="registration-item">
+                    <p><strong>Студент ID:</strong> {{ reg.student_id }}</p>
+                    <p><strong>Класс ID:</strong> {{ reg.dance_class_id }}</p>
+                    <p><strong>Статус:</strong> {{ reg.status }}</p>
+                    <p><strong>Дата:</strong> {{ reg.registration_date }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

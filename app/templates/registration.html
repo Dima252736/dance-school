@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Запись на занятие - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Запись на занятие</h2>
+    <p class="section-description">Заполните форму ниже, чтобы записаться на пробное занятие. Мы свяжемся с вами для подтверждения.</p>
+
+    <div class="registration-form">
+        <form action="/registration" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">ФИО *</label>
+                    <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="ivanov@example.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label for="level">Уровень подготовки *</label>
+                    <select id="level" name="level" required>
+                        <option value="">Выберите уровень</option>
+                        <option value="Начинающий">Начинающий (никогда не танцевал(а))</option>
+                        <option value="Начальный">Начальный (занимался(ась) немного)</option>
+                        <option value="Средний">Средний (регулярно занимаюсь)</option>
+                        <option value="Продвинутый">Продвинутый (опытный танцор)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dance_class_id">Выберите направление *</label>
+                <select id="dance_class_id" name="dance_class_id" required>
+                    <option value="">Выберите направление</option>
+                    {% for class in classes %}
+                    <option value="{{ class.id }}"
+                    {% if request.query_params.class_id|string == class.id|string %}selected{% endif %}>
+                        {{ class.name }} ({{ class.level }}) - {{ class.price }} руб.
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Дополнительная информация</label>
+                <textarea id="message" name="message" rows="4" placeholder="Расскажите о ваших целях, пожеланиях или вопросах..."></textarea>
+            </div>
+
+            <div class="form-agreement">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="agreement" required>
+                    <span>Я соглашаюсь на обработку персональных данных</span>
+                </label>
+            </div>
+
+            <button type="submit" class="cta-button">Отправить заявку</button>
+        </form>
+    </div>
+
+    <div class="registration-info">
+        <h3>Что происходит после отправки заявки?</h3>
+        <ol>
+            <li>Мы свяжемся с вами в течение 24 часов для подтверждения записи</li>
+            <li>Подберем удобное время и ответим на все вопросы</li>
+            <li>Пришлем напоминание о занятии за день до него</li>
+            <li>Проведем пробное занятие и поможем с выбором направления</li>
+        </ol>
+
+        <div class="contact-promt">
+            <p>Есть вопросы? Звоните: <strong>+7 (999) 123-45-67</strong></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

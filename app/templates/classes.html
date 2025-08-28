@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Направления - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Танцевальные направления</h2>
+    <p class="section-description">Выберите направление, которое вам по душе. У нас есть занятия для всех уровней подготовки - от начинающих до продвинутых.</p>
+
+    <div class="classes-grid">
+        {% for class in classes %}
+        <div class="class-card">
+            <h3>{{ class.name }}</h3>
+            <div class="class-info">
+                <span class="level">{{ class.level }}</span>
+                <span class="duration">{{ class.duration }} мин.</span>
+                <span class="price">{{ class.price }} руб.</span>
+            </div>
+            <p class="class-description">{{ class.description }}</p>
+            <div class="class-features">
+                <div class="feature">
+                    <strong>Уровень:</strong> {{ class.level }}
+                </div>
+                <div class="feature">
+                    <strong>Длительность:</strong> {{ class.duration }} минут
+                </div>
+                <div class="feature">
+                    <strong>Стоимость:</strong> {{ class.price }} руб. за занятие
+                </div>
+            </div>
+            <a href="/registration?class_id={{ class.id }}" class="cta-button">Записаться на пробное</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="classes-info">
+        <h3>Почему стоит выбрать наши занятия?</h3>
+        <div class="benefits-grid">
+            <div class="benefit">
+                <h4>Профессиональные преподаватели</h4>
+                <p>Все наши тренеры - дипломированные специалисты с большим опытом работы</p>
+            </div>
+            <div class="benefit">
+                <h4>Индивидуальный подход</h4>
+                <p>Небольшие группы позволяют уделить внимание каждому ученику</p>
+            </div>
+            <div class="benefit">
+                <h4>Современное оборудование</h4>
+                <p>Залы оснащены всем необходимым для комфортных занятий</p>
+            </div>
+            <div class="benefit">
+                <h4>Гибкое расписание</h4>
+                <p>Занятия в удобное время, включая вечерние часы и выходные</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

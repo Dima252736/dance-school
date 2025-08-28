@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Преподаватели - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Наши преподаватели</h2>
+    <p class="section-description">Профессиональная команда хореографов с многолетним опытом работы и любовью к танцам.</p>
+
+    <div class="teachers-grid">
+        {% for teacher in teachers %}
+        <div class="teacher-card">
+            <div class="teacher-header">
+                <h3>{{ teacher.name }}</h3>
+                <span class="experience">{{ teacher.experience }} лет опыта</span>
+            </div>
+            <div class="specialization">
+                <strong>Специализация:</strong> {{ teacher.specialization }}
+            </div>
+            <div class="teacher-bio">
+                <p>{{ teacher.bio }}</p>
+            </div>
+            <div class="teacher-stats">
+                <div class="stat">
+                    <span class="stat-value">{{ teacher.experience }}+</span>
+                    <span class="stat-label">лет преподавания</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">100+</span>
+                    <span class="stat-label">учеников</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="teachers-cta">
+        <h3>Хотите заниматься с нашими преподавателями?</h3>
+        <p>Запишитесь на пробное занятие и почувствуйте разницу!</p>
+        <a href="/registration" class="cta-button">Записаться на занятие</a>
+    </div>
+</div>
+{% endblock %}

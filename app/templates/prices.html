@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Цены - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Стоимость занятий</h2>
+
+    <div class="pricing-grid">
+        {% for class in classes %}
+        <div class="price-card">
+            <h3>{{ class.name }}</h3>
+            <p class="price">{{ class.price }} руб.</p>
+            <p class="duration">{{ class.duration }} минут</p>
+            <p class="level">Уровень: {{ class.level }}</p>
+            <ul class="price-features">
+                <li>Профессиональный преподаватель</li>
+                <li>Оборудованный зал</li>
+                <li>Индивидуальный подход</li>
+            </ul>
+            <a href="/registration?class_id={{ class.id }}" class="cta-button">Записаться</a>
+        </div>
+        {% endfor %}
+
+        <div class="price-card">
+            <h3>Индивидуальные занятия</h3>
+            <p class="price">3000 руб.</p>
+            <p class="duration">60 минут</p>
+            <p class="level">Индивидуальный подход</p>
+            <ul class="price-features">
+                <li>Персональный тренер</li>
+                <li>Гибкое расписание</li>
+                <li>Индивидуальная программа</li>
+                <li>Ускоренный прогресс</li>
+            </ul>
+            <a href="/registration" class="cta-button">Записаться</a>
+        </div>
+    </div>
+
+    <div class="pricing-info">
+        <h3>Дополнительная информация</h3>
+        <ul>
+            <li>Первое пробное занятие - <strong>бесплатно</strong></li>
+            <li>Скидка 10% при оплате за 3 месяца</li>
+            <li>Семейная скидка 15% для родственников</li>
+            <li>Студентам - скидка 20%</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Расписание - DanceStudio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Расписание занятий</h2>
+    <p class="section-description">Актуальное расписание на текущую неделю. Занятия проходят в оборудованных залах с профессиональными преподавателями.</p>
+
+    <div class="schedule-filters">
+        <button class="filter-btn active" data-day="all">Все дни</button>
+        <button class="filter-btn" data-day="Понедельник">Пн</button>
+        <button class="filter-btn" data-day="Вторник">Вт</button>
+        <button class="filter-btn" data-day="Среда">Ср</button>
+        <button class="filter-btn" data-day="Четверг">Чт</button>
+        <button class="filter-btn" data-day="Пятница">Пт</button>
+        <button class="filter-btn" data-day="Суббота">Сб</button>
+        <button class="filter-btn" data-day="Воскресенье">Вс</button>
+    </div>
+
+    <div class="schedule-grid">
+        {% for day in ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'] %}
+        <div class="schedule-day" data-day="{{ day }}">
+            <h3>{{ day }}</h3>
+            {% for item in schedule %}
+            {% if item.day_of_week == day %}
+            <div class="schedule-item">
+                <div class="class-time">
+                    <span class="time">{{ item.start_time }} - {{ item.end_time }}</span>
+                </div>
+                <div class="class-info">
+                    <h4>{{ class_map[item.dance_class_id] }}</h4>
+                    <p class="teacher">Преподаватель: {{ teacher_map[item.teacher_id] }}</p>
+                    <p class="room">Зал: {{ item.room }}</p>
+                </div>
+                <div class="class-action">
+                    <a href="/registration?class_id={{ item.dance_class_id }}" class="cta-button">Записаться</a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% if not schedule|selectattr('day_of_week', 'equalto', day)|list %}
+            <p class="no-classes">В этот день занятий нет</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="schedule-info">
+        <h3>Важная информация</h3>
+        <ul>
+            <li>Продолжительность занятия: 60-120 минут в зависимости от направления</li>
+            <li>Рекомендуем приходить за 10-15 минут до начала занятия</li>
+            <li>При себе иметь удобную одежду и сменную обувь</li>
+            <li>Первое пробное занятие - бесплатно!</li>
+            <li>Запись на занятия обязательна</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
