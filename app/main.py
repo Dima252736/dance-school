@@ -11,12 +11,15 @@ from . import models, crud, schemas
 from .dependencies import get_current_user, get_current_admin_user
 import os
 from dotenv import load_dotenv
+import sys
+
 
 load_dotenv()
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./dance_school.db")
 
 # Create tables
 models.Base.metadata.create_all(bind=engine)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = FastAPI(title="Dance School", version="1.0.0")
 
@@ -281,4 +284,4 @@ async def contact_success(request: Request):
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host=" 127.0.0.1", port=8000)
